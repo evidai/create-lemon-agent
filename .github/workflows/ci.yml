@@ -21,15 +21,24 @@ jobs:
         run: |
           chmod +x bin/cli.js
           node bin/cli.js test-scaffold
-      - name: Verify generated files
+      - name: List generated tree (debug)
+        run: ls -la test-scaffold && ls -la test-scaffold/src
+      - name: Required files present
         run: |
+          set -x
           test -f test-scaffold/package.json
           test -f test-scaffold/.gitignore
           test -f test-scaffold/.env.example
           test -f test-scaffold/src/index.ts
           test -f test-scaffold/tsconfig.json
-          ! test -f test-scaffold/_gitignore
-          grep -q '"name": "test-scaffold"' test-scaffold/package.json
+      - name: _gitignore was renamed away
+        run: |
+          if [ -f test-scaffold/_gitignore ]; then
+            echo "✗ _gitignore still exists in scaffold output"
+            exit 1
+          fi
+      - name: Project name stamped
+        run: grep -q '"name": "test-scaffold"' test-scaffold/package.json
       - name: Type-check generated project
         run: |
           cd test-scaffold
