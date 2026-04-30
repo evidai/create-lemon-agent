@@ -1,0 +1,41 @@
+{
+  "name": "create-lemon-agent",
+  "version": "0.1.0",
+  "description": "Scaffold an AI agent that pays per API call with USDC via LemonCake — running in 90 seconds.",
+  "type": "module",
+  "bin": {
+    "create-lemon-agent": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "template",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ai-agent",
+    "claude-agent-sdk",
+    "mcp",
+    "lemon-cake",
+    "m2m-payment",
+    "usdc",
+    "pay-per-call",
+    "starter",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evidai/create-lemon-agent.git"
+  },
+  "homepage": "https://lemoncake.xyz",
+  "bugs": {
+    "url": "https://github.com/evidai/create-lemon-agent/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
