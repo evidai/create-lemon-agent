@@ -17,6 +17,8 @@ cp .env.example .env   # paste your LEMON_CAKE_PAY_TOKEN
 npm start "東京の天気は？"
 ```
 
+> **Token scope:** When issuing a Pay Token at [lemoncake.xyz/dashboard](https://lemoncake.xyz/dashboard), choose **ALL services** so the agent can discover and call any available API. A `SINGLE`-service token will be rejected when the agent tries a different service.
+
 A 30-line Claude Agent SDK project, pre-wired to
 [`lemon-cake-mcp`](https://www.npmjs.com/package/lemon-cake-mcp). Your agent
 discovers paid services, pays in USDC autonomously, and every charge is
