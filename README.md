@@ -49,6 +49,23 @@ $ npm start "東京の天気は？"
 📊 Charges sync to freee/Money Forward daily if connected
 ```
 
+## Why USDC / JPYC — not plain yen?
+
+AI agents need **micro-payments**: $0.001 per API call. Bank transfers minimum is ¥1 and cards eat the fee. USDC/JPYC settle instantly with near-zero cost.
+
+Want yen? Use **JPYC** (Polygon ERC-20 pegged 1:1 to yen). No FX risk, no crypto-asset tax complexity.
+
+## vs. alternatives
+
+| | LemonCake | Composio | RapidAPI | Skyfire |
+|---|---|---|---|---|
+| Micro-payments ($0.001/call) | ✅ | ❌ | ❌ | ✅ |
+| Japan tax (withholding + invoice) | ✅ | ❌ | ❌ | ❌ |
+| freee / MF auto-journal | ✅ | ❌ | ❌ | ❌ |
+| JPYC (yen-pegged) | ✅ | ❌ | ❌ | ❌ |
+| MCP server support | ✅ | ❌ | ❌ | ❌ |
+| `npx` scaffold in 90 sec | ✅ | ❌ | ❌ | ❌ |
+
 ## Why
 
 - **No infra to host.** `lemon-cake-mcp` runs locally via `npx`, no servers to deploy.
