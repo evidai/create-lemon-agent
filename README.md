@@ -22,9 +22,6 @@ A 30-line Claude Agent SDK project, pre-wired to
 discovers paid services, pays in USDC autonomously, and every charge is
 auto-journaled into freee or Money Forward when connected.
 
-🎁 **Golden Week 2026**: first **$10 free** with code `LCGW2026` at
-[lemoncake.xyz/dashboard](https://lemoncake.xyz/dashboard).
-
 ## What you get
 
 ```
