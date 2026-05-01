@@ -1,6 +1,6 @@
 {
   "name": "create-lemon-agent",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Scaffold an AI agent that pays per API call with USDC via LemonCake — running in 90 seconds.",
   "type": "module",
   "bin": {
