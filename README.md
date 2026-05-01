@@ -14,7 +14,7 @@ npx create-lemon-agent my-agent
 cd my-agent
 npm install
 cp .env.example .env   # paste your LEMON_CAKE_PAY_TOKEN
-npm start "東京の天気は？"
+npm start "anthropic.com の主要連絡先メールを5件取得して"
 ```
 
 > **Token scope:** When issuing a Pay Token at [lemoncake.xyz/dashboard](https://lemoncake.xyz/dashboard), choose **ALL services** so the agent can discover and call any available API. A `SINGLE`-service token will be rejected when the agent tries a different service.
@@ -39,15 +39,28 @@ my-agent/
 ## Run output
 
 ```
-$ npm start "東京の天気は？"
+$ npm start "anthropic.com の主要連絡先メールを5件取得して"
 
-🍋 Asking Claude: "東京の天気は？"
+🍋 Asking Claude: "anthropic.com の主要連絡先メールを5件取得して"
 [tool] mcp__lemon-cake__list_services({…})
-[tool] mcp__lemon-cake__call_service({"service":"serper",…})
-今日の東京は晴れ、最高22℃です。
-✓ Done. Cost: 0.004 USD (Claude) + LemonCake charges
+[tool] mcp__lemon-cake__call_service({"service":"hunter.io","path":"/domain-search?domain=anthropic.com"…})
+
+## anthropic.com の主要連絡先
+
+1. miguel@anthropic.com — Head of Marketing Strategy & Ops
+2. will@anthropic.com    — Head of Corporate Accounting
+3. mike@anthropic.com    — Head of Corporate Finance & Strategy
+4. elizabeth@anthropic.com — Head of Technical Department
+5. yash@anthropic.com   — Event Director
+
+✓ Done. Cost: 0.018 USD (Claude) + 0.005 USDC (Hunter.io)
 📊 Charges sync to freee/Money Forward daily if connected
 ```
+
+> **Why this works in LemonCake but not in ChatGPT/Claude.ai**: Hunter.io
+> requires a paid API key ($49/mo) and billing setup. Your agent uses
+> LemonCake's pre-funded marketplace — discover, pay per call, no key
+> management.
 
 ## Why USDC / JPYC — not plain yen?
 
