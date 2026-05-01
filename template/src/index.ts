@@ -11,7 +11,6 @@
  *   3. .env に両方を貼り付け
  *   4. npm start
  *
- * 🎁 GW2026 — 初回 $10 無料: コード LCGW2026
  */
 import "dotenv/config";
 import Anthropic from "@anthropic-ai/sdk";
@@ -41,7 +40,7 @@ const transport = new StdioClientTransport({
   args: ["-y", "lemon-cake-mcp"],
   env: { ...process.env, LEMON_CAKE_PAY_TOKEN: PAY_TOKEN },
 });
-const mcp = new Client({ name: "create-lemon-agent", version: "0.2.0" });
+const mcp = new Client({ name: "create-lemon-agent", version: "1.0.0" });
 await mcp.connect(transport);
 
 const { tools: mcpTools } = await mcp.listTools();

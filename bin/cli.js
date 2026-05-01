@@ -39,5 +39,4 @@ console.log(`  cd ${targetName}`);
 console.log("  npm install");
 console.log("  cp .env.example .env       # then paste your LEMON_CAKE_PAY_TOKEN");
 console.log("  npm start");
-console.log("\n📖 Get a token: https://lemoncake.xyz/dashboard");
-console.log("🎁 GW2026: first $10 free with code  LCGW2026\n");
+console.log("\n📖 Get a token: https://lemoncake.xyz/dashboard\n");
