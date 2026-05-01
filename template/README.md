@@ -1,6 +1,6 @@
 # 🍋 my-lemon-agent
 
-Claude が MCP 経由で USDC 課金しながら有料 API を呼ぶ最小サンプル。
+Claude が LemonCake の MCP 経由で USDC 課金しながら有料 API を叩く最小サンプル。
 freee / Money Forward を連携していれば、決済が日次で自動仕訳に転記されます。
 
 ## 90秒セットアップ
@@ -18,20 +18,36 @@ npm start
 
 ## 実行例
 
+デフォルトのプロンプトはサービス一覧を取得するだけなので、追加課金は走りません：
+
 ```bash
-$ npm start "東京の天気は？"
-🍋 Asking Claude: "東京の天気は？"
-[tool] mcp__lemon-cake__call_service({"service":"serper",…)
-今日の東京は晴れ、最高気温22℃です。
-✓ Done. Cost: 0.0042 USD (Claude) + LemonCake charges
-📊 Charges sync to freee/Money Forward daily if connected
+$ npm start
+🍋 Asking Claude: "LemonCakeで使えるサービスを3つ、価格と用途つきで紹介して"
+[tool] list_services({"limit":10}…)
+1. Jina Reader — Webページ抽出 (0.0001 USDC/呼び出し) ...
+✓ Done. Claude cost: ~$0.0059 (3808 in / 417 out tokens)
 ```
+
+実際に有料 API を叩くには、ダッシュボードでサービスへのアクセスを有効化したうえで：
+
+```bash
+$ npm start "東京の天気を1行で教えて"
+[tool] list_services({...})
+[tool] call_service({"serviceId":"...","method":"POST","path":"/search","body":{"q":"..."}})
+今日の東京は晴れ、最高気温22℃です。
+```
+
+## 仕組み
+
+- `@anthropic-ai/sdk` で Claude を直叩き
+- `@modelcontextprotocol/sdk` で `lemon-cake-mcp` を子プロセスとして起動
+- ツールループは `src/index.ts` 内に手書き — 挙動が予測可能で、課金もログで追える
 
 ## カスタマイズ
 
-`src/index.ts` を編集して、自分のエージェントを書きましょう。MCP ツールが
-そのまま `mcp__lemon-cake__*` で生えてくるので、Claude はサービス一覧を見て
-自分で課金 API を選びます。
+`src/index.ts` を編集して自分のエージェントを書きましょう。`tools` 配列を
+絞り込んだり、`system` プロンプトを書き換えたり、`messages` を継続セッション化
+するのも数行です。
 
 ## ライセンス
 
