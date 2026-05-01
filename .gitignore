@@ -4,3 +4,7 @@ node_modules
 .env
 .env.*
 !template/.env.example
+
+# Demo recording sources (the rendered demo.gif is committed; sources stay local)
+demo.tape
+lemon_demo.sh
