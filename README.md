@@ -62,6 +62,31 @@ $ npm start "anthropic.com の主要連絡先メールを5件取得して"
 > LemonCake's pre-funded marketplace — discover, pay per call, no key
 > management.
 
+## Cost breakdown (Hunter.io demo)
+
+| | Hunter.io 直接契約 | LemonCake 経由 |
+|---|---|---|
+| 初期費用 | API key 発行 + 月額契約 | **0 円** |
+| ランニング (使わない月) | $49/mo | **$0** |
+| 1 回の呼び出し | $49 ÷ N (固定費按分) | **$0.005** (従量) |
+| API キー管理 | エージェントに秘密鍵渡す | **不要** (LemonCake が代理) |
+| 1 件呼んだ時の損益分岐 | $49 → 9,800 calls 必要 | **1 call から黒字** |
+
+→ 月数十回しか叩かない B2B エージェントなら **LemonCake が圧倒的に安い**。
+
+## Other use cases
+
+| 質問例 | 使う API | 1 コール |
+|--------|---------|---------|
+| "USD/JPY の最新レートと過去 30 日推移" | Open Exchange Rates | $0.005 |
+| "https://example.com の本文を Markdown で" | Jina Reader | $0.005 |
+| "インボイス番号 T1234567890123 が有効か" | 国税庁 invoice API | $0.005 |
+| "8.8.8.8 の地理情報と ISP" | IPinfo | $0.005 |
+| "<企業名> の法人番号と概要" | gBizINFO | $0.005 |
+| "この URL を Slack 経由で人間に確認依頼" | Slack | $0.005 |
+
+[全 16 サービス一覧 →](https://lemoncake.xyz/services)
+
 ## Why USDC / JPYC — not plain yen?
 
 AI agents need **micro-payments**: $0.001 per API call. Bank transfers minimum is ¥1 and cards eat the fee. USDC/JPYC settle instantly with near-zero cost.
