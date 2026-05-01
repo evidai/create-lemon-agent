@@ -7,6 +7,8 @@
 
 > Scaffold an AI agent that pays per API call with USDC — running in 90 seconds.
 
+![demo](https://raw.githubusercontent.com/evidai/create-lemon-agent/main/demo.gif)
+
 ```bash
 npx create-lemon-agent my-agent
 cd my-agent
